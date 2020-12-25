@@ -7,5 +7,9 @@ def index(request):
     
 def display(request):
     my_url=MyUrl.objects.all()
-    template=
+    template = '<a href="{url}">{alias}</a> --> {url}<br/>'
+    value=''
+    for url in my_url:
+        value += template.format(alias=url.alias, url=url.url)
+    return HttpResponse(value)
 
